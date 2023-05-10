@@ -64,7 +64,7 @@
             padding: 10px;
             border-radius: 5px;
         }
-        .grid-container {
+        .news-container {
           display: grid;
           grid-template-columns: 300px 700px;
           gap: 5px;
@@ -101,6 +101,8 @@
     </ul>
     </div>
     <div class="news-container">
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
     </div>
     <script>
 const newsContainer = document.getElementById("news-container");
@@ -149,6 +151,6 @@ news.forEach((item) => {
 
   newsContainer.appendChild(newsItem);
 }); 
-    </script>
+</script>
 </body>
 </html>
