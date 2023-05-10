@@ -102,5 +102,53 @@
     </div>
     <div class="news-container">
     </div>
+    <script>
+const newsContainer = document.getElementById("news-container");
+
+// Создаем массив с новостями
+const news = [
+  {
+    title: "Заголовок новости 1",
+    description: "Краткое описание новости 1",
+    link: "https://example.com/news/1",
+    image: "https://picsum.photos/id/1/200"
+  },
+  {
+    title: "Заголовок новости 2",
+    description: "Краткое описание новости 2",
+    link: "https://example.com/news/2",
+    image: "https://picsum.photos/id/2/200"
+  },
+  // Добавьте другие новости в массив
+];
+
+// Проходим по массиву новостей и добавляем их в контейнер
+news.forEach((item) => {
+  // Создаем элементы для отображения новости
+  const newsItem = document.createElement("div");
+  newsItem.classList.add("news-item");
+
+  const newsImage = document.createElement("img");
+  newsImage.src = item.image;
+
+  const newsTitle = document.createElement("h2");
+  newsTitle.innerText = item.title;
+
+  const newsDescription = document.createElement("p");
+  newsDescription.innerText = item.description;
+
+  const newsLink = document.createElement("a");
+  newsLink.href = item.link;
+  newsLink.innerText = "Подробнее";
+
+  // Добавляем элементы в контейнер
+  newsItem.appendChild(newsImage);
+  newsItem.appendChild(newsTitle);
+  newsItem.appendChild(newsDescription);
+  newsItem.appendChild(newsLink);
+
+  newsContainer.appendChild(newsItem);
+}); 
+    </script>
 </body>
 </html>
