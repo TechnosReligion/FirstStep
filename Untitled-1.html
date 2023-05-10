@@ -107,28 +107,28 @@
       // Определяем массив с данными новостей
 const newsData = [
   {
-    title: "Название новости 1",
-    content: "Краткое описание новости 1",
-    imageUrl: "https://via.placeholder.com/150",
-    fullArticleUrl: "https://example.com/news/1",
+    title: "Why you shouldn’t use magnets when looking for meteorites",
+    content: "A popular tool for identifying meteorites can destroy scientific information",
+    imageUrl: "https://www.sciencenews.org/wp-content/uploads/2023/05/050123_kk_meteorite_feat-330x186.jpg",
+    fullArticleUrl: "https://www.sciencenews.org/article/magnets-meteorites-space",
   },
   {
-    title: "Название новости 2",
-    content: "Краткое описание новости 2",
-    imageUrl: "https://via.placeholder.com/150",
-    fullArticleUrl: "https://example.com/news/2",
+    title: "The James Webb telescope revealed surprise asteroids in the Fomalhaut star system",
+    content: "The star hosts a dynamic, crowded and rapidly evolving planetary system",
+    imageUrl: "https://www.sciencenews.org/wp-content/uploads/2023/05/050523_jr_fomalhaut-330x186.jpg",
+    fullArticleUrl: "https://www.sciencenews.org/article/webb-telescope-asteroids-fomalhaut-star",
   },
   {
-    title: "Название новости 3",
-    content: "Краткое описание новости 3",
-    imageUrl: "https://via.placeholder.com/150",
-    fullArticleUrl: "https://example.com/news/3",
+    title: "Ancient giant eruptions may have seeded nitrogen needed for life",
+    content: "Lightning rips nitrogen in the air apart, allowing it to react with oxygen and other elements",
+    imageUrl: "https://www.sciencenews.org/wp-content/uploads/2023/05/042723_bh_lightning-nitrate-life_feat-1030x580.jpg",
+    fullArticleUrl: "https://www.sciencenews.org/article/volcanic-eruption-nitrogen-lightning-life",
   },
   {
-    title: "Название новости 4",
-    content: "Краткое описание новости 4",
-    imageUrl: "https://via.placeholder.com/150",
-    fullArticleUrl: "https://example.com/news/4",
+    title: "San Francisco airport will monitor plane waste for COVID-19 variants",
+    content: "The program is the first in the country to continuously monitor sewage from airplanes",
+    imageUrl: "https://www.sciencenews.org/wp-content/uploads/2023/05/050923_bl_airport_wastewater_treatment_feat-1030x580.jpg",
+    fullArticleUrl: "https://www.sciencenews.org/article/san-francisco-plane-waste-covid-19-variant",
   },
 ];
 
@@ -155,7 +155,7 @@ for (let i = 0; i < newsData.length; i++) {
   const newsLink = document.createElement("a");
   newsLink.classList.add("news-link");
   newsLink.href = newsData[i].fullArticleUrl;
-  newsLink.textContent = "Подробнее";
+  newsLink.textContent = "more";
 
   // Добавляем созданные элементы к элементу новости
   newsItem.appendChild(newsImage);
