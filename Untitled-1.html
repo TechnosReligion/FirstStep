@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>House</title>
+    <style>
+        body {
+             background-color: black;
+             color: white;
+             background-image: url("background.gif");
+             background-repeat: no-repeat;
+             background-size: cover;
+             z-index: -5;
+        }
+        h2 {
+            background-color: rgba(0, 0, 0, 0.8);
+            display: inline-block;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+        .logo {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 1%;
+            left: 26%;
+            background-color: red;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+            z-index: 2;
+        }
+        @keyframes spin {
+           from {
+              transform: rotate(0deg);
+          }
+           to {
+              transform: rotate(360deg);
+          }
+
+        }
+        .about {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: rgb(167, 25, 25);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .technos {
+            color: green;
+            background-color: red;
+            font-family: Arial, sans-serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 15px 5px 15px 5px;
+        }
+        .section, ul, li {
+            background-color: goldenrod;
+            display: inline-block;
+            font-size: 1em;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .grid-container {
+          display: grid;
+          grid-template-columns: 300px 700px;
+          gap: 5px;
+          position: absolute;
+          top: 35%;
+          left: 20%;
+        }
+        .grid-item {
+          text-align: center;
+          border: 1px solid black;
+          padding: 10px;
+          background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Welcome to the site <span class="technos">Technos</span></h2>
+    <img src="logo.png" alt="site logo" class="logo">
+    <p class="about">The site was created for fans of all areas of science. For those who recognize science as their religion. <span style="color: green;">WE ARE TECHNOS.</span></p>
+    <div>
+        <ul>
+        <h2 class="section" style="font-size: 1.2em; padding: 0px;">S e c t i o n s</h2>
+        <li style="display: block">Computer Science</li>
+        <li style="display: block">Physics</li>
+        <li style="display: block">Chemistry</li>
+        <li style="display: block">Biology</li>
+        <li style="display: block">Mathematics</li>
+        <li style="display: block">Astronomy</li>
+        <li style="display: block">Geology</li>
+        <li style="display: block">Psychology</li>
+        <li style="display: block">Engineering</li>
+        <li style="display: block">Programming</li>
+    </ul>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">1</div>
+      <div class="grid-item">2</div>
+      <div class="grid-item">3</div>
+      <div class="grid-item">4</div>
+      <div class="grid-item">5</div>
+      <div class="grid-item">6</div>
+    </div>
+</body>
+</html>
