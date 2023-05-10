@@ -66,7 +66,7 @@
         }
         .news-container {
           display: grid;
-          grid-template-columns: 300px 700px;
+          grid-template-columns: auto auto;
           gap: 5px;
           position: absolute;
           top: 35%;
@@ -102,56 +102,70 @@
     </ul>
     </div>
     <div class="news-container">
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
     </div>
     <script>
-const newsContainer = document.getElementById("news-container");
-
-// Создаем массив с новостями
-const news = [
+      // Определяем массив с данными новостей
+const newsData = [
   {
-    title: "Заголовок новости 1",
-    description: "Краткое описание новости 1",
-    link: "https://example.com/news/1",
-    image: "https://picsum.photos/id/1/200"
+    title: "Название новости 1",
+    content: "Краткое описание новости 1",
+    imageUrl: "https://via.placeholder.com/150",
+    fullArticleUrl: "https://example.com/news/1",
   },
   {
-    title: "Заголовок новости 2",
-    description: "Краткое описание новости 2",
-    link: "https://example.com/news/2",
-    image: "https://picsum.photos/id/2/200"
+    title: "Название новости 2",
+    content: "Краткое описание новости 2",
+    imageUrl: "https://via.placeholder.com/150",
+    fullArticleUrl: "https://example.com/news/2",
   },
-  // Добавьте другие новости в массив
+  {
+    title: "Название новости 3",
+    content: "Краткое описание новости 3",
+    imageUrl: "https://via.placeholder.com/150",
+    fullArticleUrl: "https://example.com/news/3",
+  },
+  {
+    title: "Название новости 4",
+    content: "Краткое описание новости 4",
+    imageUrl: "https://via.placeholder.com/150",
+    fullArticleUrl: "https://example.com/news/4",
+  },
 ];
 
-// Проходим по массиву новостей и добавляем их в контейнер
-news.forEach((item) => {
-  // Создаем элементы для отображения новости
+// Находим контейнер для новостей
+const newsContainer = document.querySelector(".news-container");
+
+// Создаем элементы для каждой новости
+for (let i = 0; i < newsData.length; i++) {
   const newsItem = document.createElement("div");
   newsItem.classList.add("news-item");
 
   const newsImage = document.createElement("img");
-  newsImage.src = item.image;
+  newsImage.classList.add("news-image");
+  newsImage.src = newsData[i].imageUrl;
 
   const newsTitle = document.createElement("h2");
-  newsTitle.innerText = item.title;
+  newsTitle.classList.add("news-title");
+  newsTitle.textContent = newsData[i].title;
 
-  const newsDescription = document.createElement("p");
-  newsDescription.innerText = item.description;
+  const newsContent = document.createElement("p");
+  newsContent.classList.add("news-content");
+  newsContent.textContent = newsData[i].content;
 
   const newsLink = document.createElement("a");
-  newsLink.href = item.link;
-  newsLink.innerText = "Подробнее";
+  newsLink.classList.add("news-link");
+  newsLink.href = newsData[i].fullArticleUrl;
+  newsLink.textContent = "Подробнее";
 
-  // Добавляем элементы в контейнер
+  // Добавляем созданные элементы к элементу новости
   newsItem.appendChild(newsImage);
   newsItem.appendChild(newsTitle);
-  newsItem.appendChild(newsDescription);
+  newsItem.appendChild(newsContent);
   newsItem.appendChild(newsLink);
 
+  // Добавляем элемент новости к контейнеру для новостей
   newsContainer.appendChild(newsItem);
-}); 
-</script>
+}
+    </script>
 </body>
 </html>
