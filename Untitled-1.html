@@ -65,19 +65,26 @@
             border-radius: 5px;
         }
         .news-container {
+          width: 800px;
+          height: 200px;
           display: grid;
-          grid-template-columns: auto auto;
+          grid-template-columns: 1fr 1fr;
           gap: 5px;
           position: absolute;
-          top: 35%;
-          left: 20%;
+          top: 25%;
+          left: 15%;
         }
-        .grid-item {
-          text-align: center;
-          border: 1px solid black;
-          padding: 10px;
-          background-color: yellow;
-          color: black;
+        .news-image {
+          width: 90px;
+          height: 90px;
+          border: 2px solid goldenrod;
+        }
+        .news-title {
+          font-size: 1em;
+        }
+        .news-content {
+          color: blanchedalmond;
+          font-family: 'Times New Roman', Times, serif;
         }
 
     </style>
@@ -155,7 +162,7 @@ for (let i = 0; i < newsData.length; i++) {
   const newsLink = document.createElement("a");
   newsLink.classList.add("news-link");
   newsLink.href = newsData[i].fullArticleUrl;
-  newsLink.textContent = "more";
+  newsLink.textContent = "More";
 
   // Добавляем созданные элементы к элементу новости
   newsItem.appendChild(newsImage);
