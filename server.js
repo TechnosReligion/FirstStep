@@ -1,43 +1,46 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
+const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-const sqlite3 = require('sqlite3').verbose();
+const dbPath = path.resolve(__dirname, 'database.db');
+const db = new sqlite3.Database(dbPath);
 
-const db = new sqlite3.Database('./database.db', (err) => {
+app.post('/register', (req, res) => {
+  const { name, email, password } = req.body;
+  const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+  db.run(query, [name, email, password], (err) => {
     if (err) {
-        return console.error(err.message);
+      console.error(err.message);
+      res.status(500).send('Failed to register user');
+    } else {
+      res.send('User registered successfully');
     }
-    console.log('Connected to the SQLite database.');
-});
-
-
-connection.connect(function(err) {
-  if (err) {
-    console.error('Error connecting: ' + err.stack);
-    return;
-  }
-  console.log('Connected as id ' + connection.threadId);
-});
-
-app.post('/register', function(req, res) {
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
-
-  const query = `INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${password}')`;
-
-  connection.query(query, function(error, results, fields) {
-    if (error) throw error;
-    res.send('User registered successfully!');
   });
 });
 
-app.listen(3000, function() {
-  console.log('Server is listening on port 3000!');
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+  db.get(query, [email, password], (err, row) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Failed to authenticate user');
+    } else if (!row) {
+      res.status(401).send('Invalid email or password');
+    } else {
+      res.send(`Welcome, ${row.name}!`);
+    }
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });
