@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -7,12 +7,15 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const connection = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'your_mysql_username',
-  password: 'your_mysql_password',
-  database: 'users_db',
+const sqlite3 = require('sqlite3').verbose();
+
+const db = new sqlite3.Database('./database.db', (err) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Connected to the SQLite database.');
 });
+
 
 connection.connect(function(err) {
   if (err) {
